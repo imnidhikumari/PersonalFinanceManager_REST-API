@@ -8,6 +8,8 @@ import org.hibernate.SessionFactory;
 import com.google.inject.Inject;
 import org.hibernate.Transaction;
 
+import java.util.Optional;
+
 
 public class UserDAO {
 
@@ -27,6 +29,16 @@ public class UserDAO {
         } catch (HibernateException e) {
             if(transaction != null) transaction.rollback();
             throw new RuntimeException("Error registering user: ",e);
+        }
+    }
+
+    public Optional<User> findUsersByEmail(String email){
+        try(Session session = sessionFactory.openSession()){
+            return session.createQuery("FROM User WHERE email = :email",User.class)
+                    .setParameter("email",email)
+                    .uniqueResultOptional();
+        }catch (HibernateException e){
+            throw new RuntimeException("Error Fetching user by email: " + email,e );
         }
     }
 

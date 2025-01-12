@@ -2,7 +2,6 @@ package org.finance2.resources;
 
 import com.codahale.metrics.MetricRegistry;
 import com.codahale.metrics.Timer;
-import org.finance2.core.User;
 import org.finance2.dao.CategoryDAO;
 import org.finance2.core.Category;
 

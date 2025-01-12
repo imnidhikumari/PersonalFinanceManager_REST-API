@@ -1,7 +1,6 @@
 package org.finance2.dao;
 
 import org.finance2.core.Category;
-import org.finance2.core.User;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
