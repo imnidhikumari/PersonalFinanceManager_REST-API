@@ -1,5 +1,6 @@
 package org.financ2.utils;
 
+import io.jsonwebtoken.Claims;
 import org.finance2.utils.JwtUtil;
 
 public class JwtUtilTest {
@@ -8,7 +9,8 @@ public class JwtUtilTest {
         String token = JwtUtil.generateToken("test@gmail.com");
         System.out.println("Generated Token" + token);
 
-        String email = JwtUtil.validateToken(token);
+        Claims claims = JwtUtil.validateToken(token);
+        String email = claims.getSubject(); //In claims, subject contains email
         System.out.println("Extracted Email: " + email);
     }
 }
