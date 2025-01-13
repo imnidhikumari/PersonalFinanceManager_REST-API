@@ -9,6 +9,7 @@ import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 
+import org.finance2.resources.BalanceResource;
 import org.finance2.resources.CategoryResource;
 import org.finance2.resources.TransactionResource;
 import org.finance2.resources.UserResource;
@@ -59,6 +60,7 @@ public class PersonalFinanceManagerApplication extends Application<PersonalFinan
         final UserResource userResource = new UserResource(userDAO, metricRegistry);
         final CategoryResource categoryResource = new CategoryResource(categoryDAO, metricRegistry);
         final TransactionResource transactionResource = new TransactionResource(transactionDAO, metricRegistry);
+        final BalanceResource balanceResource = new BalanceResource(transactionDAO, metricRegistry);
 
         environment.jersey().register(new AbstractBinder() {
             @Override
@@ -70,6 +72,7 @@ public class PersonalFinanceManagerApplication extends Application<PersonalFinan
                 bind(userResource).to(UserResource.class).in(Singleton.class);
                 bind(categoryResource).to(CategoryResource.class).in(Singleton.class);
                 bind(transactionResource).to(TransactionResource.class).in(Singleton.class);
+                bind(balanceResource).to(BalanceResource.class).in(Singleton.class);
             }
         });
 
@@ -77,6 +80,7 @@ public class PersonalFinanceManagerApplication extends Application<PersonalFinan
         environment.jersey().register(userResource);
         environment.jersey().register(categoryResource);
         environment.jersey().register(transactionResource);
+        environment.jersey().register(balanceResource);
         environment.jersey().register(JwtAuthFilter.class);
         environment.jersey().register(RolesAllowedDynamicFeature.class);
 
@@ -86,7 +90,5 @@ public class PersonalFinanceManagerApplication extends Application<PersonalFinan
         LOGGER.info("Personal Finance Management Application started successfully");
 
     }
-
-
 
 }

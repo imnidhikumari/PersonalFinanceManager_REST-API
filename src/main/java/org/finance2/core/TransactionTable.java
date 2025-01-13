@@ -2,6 +2,7 @@ package org.finance2.core;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import lombok.AccessLevel;
 import lombok.Data;
@@ -10,7 +11,7 @@ import lombok.experimental.FieldDefaults;
 import java.util.Date;
 
 @Entity
-@Table(name="transaction")
+@Table(name="transactionTable")
 @Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class TransactionTable {
@@ -24,7 +25,7 @@ public class TransactionTable {
     User user;
 
     @Column(name="amount", nullable = false)
-    @NotBlank
+    @NotNull
     Double amount;
 
     @Column(name="type", nullable = false)

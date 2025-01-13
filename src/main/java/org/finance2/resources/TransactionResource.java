@@ -19,7 +19,7 @@ public class TransactionResource {
     private  final TransactionDAO transactionDAO;
     private final Timer addTransactionTimer;
     private final Timer getAllTransactionTimer;
-    private final Timer getTransactionByIdTimer;
+    private final Timer getTransactionByUserIdTimer;
 
 
     @Inject
@@ -28,7 +28,7 @@ public class TransactionResource {
 
         this.addTransactionTimer=metrics.timer(MetricRegistry.name(CategoryResource.class,"addTransaction"));
         this.getAllTransactionTimer =metrics.timer(MetricRegistry.name(CategoryResource.class,"getAllTransaction"));
-        this.getTransactionByIdTimer =metrics.timer(MetricRegistry.name(CategoryResource.class,"getTransactionById"));
+        this.getTransactionByUserIdTimer =metrics.timer(MetricRegistry.name(CategoryResource.class,"getTransactionByUserId"));
 
     }
 
@@ -45,14 +45,18 @@ public class TransactionResource {
     }
 
     @GET
-    @Path("id/{id}")
-    public Response getTransactionById(@PathParam("id") Long id){
-        final Timer.Context context = getTransactionByIdTimer.time();
-        try{
-            return transactionDAO.getTransactionById(id)
-                    .map(transactionTable -> Response.ok(transactionTable).build())
-                    .orElse(Response.status(Response.Status.NOT_FOUND).build());
-        }finally {
+    @Path("/user/{userId}")
+    public Response getTransactionsByUserId(@PathParam("userId") Long userId) {
+        final Timer.Context context = getTransactionByUserIdTimer.time();
+        try {
+            List<TransactionTable> transactions = transactionDAO.getTransactionByUserId(userId);
+            if (transactions.isEmpty()) {
+                return Response.status(Response.Status.NOT_FOUND)
+                        .entity("No transactions found for user with id: " + userId)
+                        .build();
+            }
+            return Response.ok(transactions).build();
+        } finally {
             context.stop();
         }
     }

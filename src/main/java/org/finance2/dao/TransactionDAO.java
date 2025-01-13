@@ -9,7 +9,6 @@ import com.google.inject.Inject;
 import org.hibernate.Transaction;
 
 import java.util.List;
-import java.util.Optional;
 
 
 public class TransactionDAO {
@@ -41,12 +40,13 @@ public class TransactionDAO {
         }
     }
 
-    public Optional<TransactionTable> getTransactionById(Long id){
+    public List<TransactionTable> getTransactionByUserId(Long userId){
         try(Session session=sessionFactory.openSession()){
-            TransactionTable transactionTable = session.get(TransactionTable.class,id);
-            return Optional.ofNullable(transactionTable);
+            return session.createQuery("FROM TransactionTable t WHERE t.userId= :userId",TransactionTable.class)
+                    .setParameter("userId", userId)
+                    .list();
         } catch (HibernateException e) {
-            throw new RuntimeException("Error getting transaction by id:" + id, e);
+            throw new RuntimeException("Error getting transaction by id:" + userId, e);
         }
     }
 
