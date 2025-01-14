@@ -10,7 +10,7 @@ A. Users
 
 2. For login
    a. Valid Login
-   <img width="682" alt="Screenshot 2025-01-14 at 10 28 51 PM" src="https://github.com/user-attachments/assets/059b2dd4-3734-494b-b008-3ac22d9be7f2" />
+   <img width="682" alt="Screenshot 2025-01-14 at 10 28 51 PM" src="https://github.com/user-attachments/assets/a7151757-a6c6-4fd0-b8a9-ada993f94b2f" />
 
    b. Invalid Login
   <img width="699" alt="Screenshot 2025-01-14 at 9 24 48 PM" src="https://github.com/user-attachments/assets/fa80b7d4-4c05-490c-a68f-42e347c2924a" />
