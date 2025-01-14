@@ -1,4 +1,4 @@
-package org.finance2.dtoOrmodels;
+package org.finance2.dtoOrmodels.response;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.dropwizard.jackson.JsonSnakeCase;
@@ -7,18 +7,15 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
 
-import javax.validation.constraints.NotNull;
-
 @Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonSnakeCase
-public class LoginRequest {
+public class TransactionResponse {
 
-    @NotNull
-    String email;
-
-    @NotNull
-    String password;
+    Long userId;
+    Double amount;
+    String type;
+    String description;
 }

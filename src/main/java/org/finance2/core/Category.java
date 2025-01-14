@@ -2,6 +2,7 @@ package org.finance2.core;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import lombok.AccessLevel;
 import lombok.Data;
@@ -22,7 +23,7 @@ public class Category {
 
     @ManyToOne
     @JoinColumn(name="user_id", nullable = false)
-    @NotBlank
+    @NotNull(message = "User must not be null")
     User user;
 
 }

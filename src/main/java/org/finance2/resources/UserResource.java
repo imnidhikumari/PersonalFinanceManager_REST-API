@@ -4,7 +4,7 @@ import com.codahale.metrics.MetricRegistry;
 import com.codahale.metrics.Timer;
 import org.finance2.core.User;
 import org.finance2.dao.UserDAO;
-import org.finance2.dtoOrmodels.LoginRequest;
+import org.finance2.dtoOrmodels.request.LoginRequest;
 import org.finance2.utils.JwtUtil;
 
 import javax.inject.Inject;
@@ -67,5 +67,4 @@ public class UserResource {
                 .entity("An error occurred during login").build();
     }
     }
-
 }

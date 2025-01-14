@@ -4,12 +4,15 @@ import com.codahale.metrics.MetricRegistry;
 import com.codahale.metrics.Timer;
 import org.finance2.core.TransactionTable;
 import org.finance2.dao.TransactionDAO;
+import org.finance2.dtoOrmodels.response.TransactionResponse;
+import static org.finance2.mapper.TransactionMapper.mapToResponse;
 
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
+
 
 @Path("/transactions")
 @Produces(MediaType.APPLICATION_JSON)
@@ -38,7 +41,8 @@ public class TransactionResource {
         final Timer.Context context = addTransactionTimer.time();
         try{
             transactionDAO.addTransaction(transactionTable);
-            return Response.status(Response.Status.CREATED).entity(transactionTable).build();
+            TransactionResponse response = mapToResponse(transactionTable);
+            return Response.status(Response.Status.CREATED).entity(response).build();
         }finally {
             context.stop();
         }

@@ -21,7 +21,7 @@ public class TransactionTable {
 
     @ManyToOne
     @JoinColumn(name="user_id", nullable = false)
-    @NotBlank
+    @NotNull(message = "User must not be null")
     User user;
 
     @Column(name="amount", nullable = false)
@@ -34,7 +34,7 @@ public class TransactionTable {
 
     @ManyToOne
     @JoinColumn(name="category_id", nullable = false)
-    @NotBlank
+    @NotNull(message = "User must not be null")
     Category category;
 
     @Column(name="description", nullable = false)

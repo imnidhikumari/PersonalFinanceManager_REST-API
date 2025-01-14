@@ -16,6 +16,13 @@ public class JwtAuthFilter implements ContainerRequestFilter{
 
     @Override
     public void filter(ContainerRequestContext requestContext) throws IOException {
+
+        String path = requestContext.getUriInfo().getPath();
+        // Only apply to specific paths
+        if (!path.startsWith("transactions") && !path.startsWith("balance")) {
+            return; // Skip the filter for other resources
+        }
+
         String authorizationHeader = requestContext.getHeaderString("Authorization");
 
         if (authorizationHeader == null || !authorizationHeader.startsWith("Bearer")) {

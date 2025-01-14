@@ -11,13 +11,13 @@ logging:
 server:
   applicationConnectors:
     - type: http
-      port: 8080  # Port number, verify if set correctly
+      port: 8080
   adminConnectors:
     - type: http
-      port: 8081  # Admin port, optional
+      port: 8081
 database:
   dialect: org.hibernate.dialect.MySQL8Dialect
   url: jdbc:mysql://localhost:3306/PersonalFinance_database
   driverClass: com.mysql.cj.jdbc.Driver
   user: root
-  password: Shiv@123
+  password: ***YourDataBasePwd**
