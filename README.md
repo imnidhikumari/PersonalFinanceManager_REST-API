@@ -5,15 +5,12 @@ Here are APIs Response on Postman:
 
 A. Users
 
-1. To register users
-   <img width="538" alt="Screenshot 2025-01-14 at 3 08 58 PM" src="https://github.com/user-attachments/assets/98153417-ed41-4d6e-b286-065c0d086525" />
+1. To register users<img width="538" alt="Screenshot 2025-01-14 at 3 08 58 PM" src="https://github.com/user-attachments/assets/98153417-ed41-4d6e-b286-065c0d086525" />
 
 2. For login
-   a. Valid Login
-   <img width="682" alt="Screenshot 2025-01-14 at 10 28 51 PM" src="https://github.com/user-attachments/assets/a7151757-a6c6-4fd0-b8a9-ada993f94b2f" />
+   a. Valid Login<img width="682" alt="Screenshot 2025-01-14 at 10 28 51 PM" src="https://github.com/user-attachments/assets/a7151757-a6c6-4fd0-b8a9-ada993f94b2f" />
 
-   b. Invalid Login
-  <img width="699" alt="Screenshot 2025-01-14 at 9 24 48 PM" src="https://github.com/user-attachments/assets/fa80b7d4-4c05-490c-a68f-42e347c2924a" />
+   b. Invalid Login<img width="699" alt="Screenshot 2025-01-14 at 9 24 48 PM" src="https://github.com/user-attachments/assets/fa80b7d4-4c05-490c-a68f-42e347c2924a" />
 
 
 B. Transactions:
